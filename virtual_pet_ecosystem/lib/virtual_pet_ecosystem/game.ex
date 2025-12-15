@@ -148,8 +148,38 @@ defmodule VirtualPetEcosystem.Game do
     """)
 
     if pet.health <= 0 do
-      IO.puts("\nYour pet has died. The game will now exit.\n")
-      System.halt(0)
+  IO.puts("\nYour pet, #{pet.name}, has died. Would you like to adopt a new pet? (y/n)\n")
+
+  answer =
+    IO.gets("> ")
+    |> case do
+      nil -> "n"
+      input -> String.trim(String.downcase(input))
     end
+
+  case answer do
+    "y" ->
+      new_name =
+        IO.gets("Choose a name for your new pet (leave empty for Fluffy): ")
+        |> case do
+          nil -> "Fluffy"
+          input ->
+            case String.trim(input) do
+              "" -> "Fluffy"
+              other -> other
+            end
+        end
+
+      # start new pet and restart the game loop
+      VirtualPetEcosystem.Pet.start_link(new_name)
+      IO.puts("You adopted a new pet named #{new_name}!")
+      loop(new_name)
+
+    _ ->
+      IO.puts("\nGoodbye!\n")
+      System.halt(0)
+  end
+end
+
   end
 end
