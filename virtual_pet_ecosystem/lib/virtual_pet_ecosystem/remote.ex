@@ -1,5 +1,5 @@
 defmodule VirtualPetEcosystem.Remote do
-  @moduledoc """
+  """
   Helpers for calling into a pet-owning node from other nodes.
   """
 

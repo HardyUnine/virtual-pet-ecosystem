@@ -2,7 +2,7 @@ defmodule VirtualPetEcosystem.Pet do
   # Declare this module as a GenServer (generic server process managed by OTP)
   use GenServer
 
-  # :node       -> which node (BEAM VM) the pet process is running on
+  # :node -> which node (BEAM VM) the pet process is running on
   # :last_updated -> timestamp of the last state change / tick
   defstruct [:name, :hunger, :happiness, :health, :node, :last_updated]
 
