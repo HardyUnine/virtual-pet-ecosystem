@@ -136,4 +136,6 @@ Angeliki Andreadi, Keenan Hardy
 
 ## License
 
-MIT License
+This is for educational purposes only 
+
+
